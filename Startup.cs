@@ -29,11 +29,11 @@ namespace javora
         {
             services.AddControllersWithViews();
 
-            services.AddDbContext<UserContext>(options =>
+            services.AddDbContext<JavoraContext>(options =>
                 options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
 
             services.AddIdentity<User, IdentityRole>()
-                .AddEntityFrameworkStores<UserContext>();
+                .AddEntityFrameworkStores<JavoraContext>();
 
             services.AddControllersWithViews();
         }

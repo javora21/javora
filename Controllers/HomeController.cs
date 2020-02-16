@@ -27,9 +27,9 @@ namespace javora.Controllers
         public async Task<IActionResult> Index()
         {
             //var user = new User { UserName = "Admin" };
-            //var res = await _user.CreateAsync(user, "!QA2ws3ed");
-            //IdentityResult result = await _role.CreateAsync(new IdentityRole("admin"));
-            //var user = await _user.FindByIdAsync("082902d3-bb72-4a4b-9b0e-4b1f5b5009a3");
+            //await _user.CreateAsync(user, "!QA2ws3ed");
+            //await _role.CreateAsync(new IdentityRole("admin"));
+           // var us = new UserContext().Users.FirstOrDefault();
             //IdentityResult result = await _user.AddToRoleAsync(user, "admin");
 
             return View();

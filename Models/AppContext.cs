@@ -8,11 +8,15 @@ using javora.Models.Database;
 
 namespace javora.Models
 {
-    public class UserContext : IdentityDbContext<User>
+    public class JavoraContext : IdentityDbContext<User>
     {
-        public UserContext(DbContextOptions<UserContext> options) : base(options)
+        public JavoraContext(DbContextOptions<JavoraContext> options) : base(options)
         {
             Database.EnsureCreated();
         }
+
+        public DbSet<News> News { get; set; }
+
+        public DbSet<News> Images { get; set; }
     }
 }
