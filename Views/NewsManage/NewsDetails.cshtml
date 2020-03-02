@@ -1,0 +1,8 @@
+﻿@model javora.Models.View.NewsModel
+
+@{
+    ViewData["Title"] = "NewsDetails";
+}
+    <div class="content">
+        @await Html.PartialAsync("_NewsContent.cshtml", Model)
+    </div>

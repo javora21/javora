@@ -208,7 +208,7 @@ table.bordered tbody tr:hover {
 }
 .header-logo{
 	height: 100px;
-    background-image:  url("RootContent/main.jpg") ;
+    background-image:  url("../RootContent/main.jpg") ;
     background-repeat: no-repeat;
     background-size: cover;
 }
@@ -500,13 +500,10 @@ ul.menu > li:hover > ul.submenu {
 /*News Manager*/
 /*ImageList*/
 .image-list-item{
-    float:left;
+
     margin:20px;
     width:150px;
     border: 2px solid gray
-}
-.image-list-item>img{
-    width:100%;
 }
 
 @media(max-width: 768px){

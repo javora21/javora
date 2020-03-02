@@ -9,6 +9,7 @@ using javora.Models.View;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Newtonsoft.Json;
 
 namespace javora.Controllers
@@ -26,37 +27,52 @@ namespace javora.Controllers
             _environment = environment;
             this.db = db;
         }
+        #region Admin region
         public IActionResult AddNews()
         {
             return View();
         }
         [HttpPost]
-        public IActionResult SaveNews(NewsModel model, int newsId)
+        public async Task<IActionResult> SaveNews(NewsModel model)
         {
-
-
-            return View();
-        }
-        [HttpPost]
-        public async Task<IActionResult> LoadPhoto(IFormFileCollection formData)
-        {
-            var guid = Guid.NewGuid();
 
             List<Image> ls = new List<Image>();
-            List < ImageModel > viewList = new List<ImageModel>();
-            foreach (var item in formData)
+            string imgName = Guid.NewGuid() + Path.GetExtension(model.MainImage.FileName);
+
+            string path = Path.Combine("Images", "News", imgName);
+            using (var fileStream = new FileStream( Path.Combine(_environment.WebRootPath,path), FileMode.Create))
             {
-                string path = "/Images/" + guid + "-" + item.FileName;
-                using (var fileStream = new FileStream(_environment.WebRootPath + path, FileMode.Create))
-                {
-                    await item.CopyToAsync(fileStream);
-                }
-                ls.Add(new Image { Name =guid +"-"+ item.FileName, Puth = path });
-                viewList.Add(new ImageModel { Name = item.FileName, Path = path });
+                await model.MainImage.CopyToAsync(fileStream);
             }
-            db.News.Add(new News{ NewsGuid = guid, Images = ls});
+            ls.Add(new Image { Name = imgName, Puth = path, IsMain = true });
+
+            var news = new News
+            {
+                NewsGuid = Guid.NewGuid(),
+                Images = ls,
+                Title = model.Title,
+                Content = model.Content,
+                Description = model.Description
+            };
+            db.News.Add(news);
             await db.SaveChangesAsync();
-            return Ok(viewList);
+
+            return RedirectToAction("NewsDetails", new { guid = news.NewsGuid.ToString()});
         }
+        #endregion
+        #region User region
+        public async Task<IActionResult> NewsDetails(string guid)
+        {
+            var news = await db.News.Include(x=>x.Images).FirstOrDefaultAsync(x => x.NewsGuid == Guid.Parse(guid));
+            var viewModel = new NewsModel
+            {
+                Title = news.Title,
+                Description = news.Description,
+                MainImagePath = news.Images.Where(x => x.IsMain == true).FirstOrDefault().Puth,
+                Content = news.Content
+            };
+            return View(viewModel);
+        }
+        #endregion
     }
 }

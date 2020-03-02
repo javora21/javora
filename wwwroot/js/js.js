@@ -21,7 +21,6 @@ $("#images-load-form").submit(function (event) {
         processData: false,
         headers: { "Accept": "application/json"},
         success: function (returndata) {
-            debugger;
             for (var i = 0; i < returndata.length; i++) {
                 $('#image-list').append(
                     '<div><img class="image-list-item" src="' + returndata[i].path + '" />'
@@ -32,6 +31,18 @@ $("#images-load-form").submit(function (event) {
     });
 
     return false;
+});
+
+$("#main-image").on('input', function (event) {
+    debugger;
+    var reader = new FileReader();
+    reader.readAsDataURL(event.currentTarget.files[0]);
+    reader.onload = function () {
+        $('#main-image-view').html(
+            '<img class="image-list-item" src="' + reader.result + '" />'
+        );
+    }  
+
 });
 
 
