@@ -1,0 +1,58 @@
+﻿@model IEnumerable<javora.Models.View.NewsModel>
+
+@{
+    ViewData["Title"] = "Новини";
+}
+
+    <div class="content">
+        <a href ="@Url.Action("AddNews")" class="btn btn-success" style="margin-bottom:10px">Додати новину</a>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>
+                        ID
+                    </th>
+                    <th>
+                        Заголовок
+                    </th>
+                    <th>
+                        Опис
+                    </th>
+                    <th>
+                        Зображення
+                    </th>
+                    <th>
+                        URL ID
+                    </th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @item.Id
+                        </td>
+                        <td>
+                            @item.Title
+                        </td>
+                        <td>
+                            @item.Description
+                        </td>
+                        <td>
+                            <img style="height:50px" src ="../@item.MainImagePath"/>
+                        </td>
+                        <td>
+                            @item.Guid
+                        </td>
+                        <td>
+                            <a href="@Url.Action("EditNews",new { guid = item.Guid})" class="btn btn-primary">Редагувати</a>
+                            <a href="@Url.Action("DeleteNews",new { guid = item.Guid}))" class="btn btn-danger">Видалити</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+

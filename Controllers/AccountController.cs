@@ -17,6 +17,7 @@ namespace javora.Controllers
         {
             _signInManager = signInManager;
         }
+        [Route("Login")]
         public IActionResult Login()
         {
             return View(new Login());

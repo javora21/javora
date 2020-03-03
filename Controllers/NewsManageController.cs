@@ -32,6 +32,24 @@ namespace javora.Controllers
         {
             return View();
         }
+        public IActionResult NewsAdminList()
+        {
+            var news = db.News.Include(x => x.Images).AsEnumerable();
+            List<NewsModel> model = new List<NewsModel>();
+            foreach (var item in news)
+            {
+                model.Add(new NewsModel
+                {
+                    Id = item.Id,
+                    MainImagePath = item.Images.Where(x=>x.IsMain).FirstOrDefault().Puth,
+                    Title = item.Title,
+                    Description = item.Description,
+                    Guid = item.NewsGuid
+
+                });
+            }
+            return View(model);
+        }
         [HttpPost]
         public async Task<IActionResult> SaveNews(NewsModel model)
         {
@@ -40,7 +58,7 @@ namespace javora.Controllers
             string imgName = Guid.NewGuid() + Path.GetExtension(model.MainImage.FileName);
 
             string path = Path.Combine("Images", "News", imgName);
-            using (var fileStream = new FileStream( Path.Combine(_environment.WebRootPath,path), FileMode.Create))
+            using (var fileStream = new FileStream(Path.Combine(_environment.WebRootPath,path), FileMode.Create))
             {
                 await model.MainImage.CopyToAsync(fileStream);
             }
@@ -61,6 +79,7 @@ namespace javora.Controllers
         }
         #endregion
         #region User region
+        [Route("News/{guid}")]
         public async Task<IActionResult> NewsDetails(string guid)
         {
             var news = await db.News.Include(x=>x.Images).FirstOrDefaultAsync(x => x.NewsGuid == Guid.Parse(guid));

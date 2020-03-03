@@ -9,6 +9,9 @@ namespace javora.Models.View
 {
     public class NewsModel
     {
+        public int Id { get; set; }
+        public Guid Guid { get; set; }
+
         [Required(ErrorMessage = "Обов'язкове поле")]
         [MaxLength(100,ErrorMessage = "Забагато символів")]
         public string Title { get; set; }

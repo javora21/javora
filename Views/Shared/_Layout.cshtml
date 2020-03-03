@@ -7,7 +7,7 @@
     <meta name="keywords" content="Шаблоны сайтов бесплатно, дизайн сайта бесплатно, адаптивный дизайн">
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="~/css/style.css">
-    <title>Бесплатные шаблоны сайтов</title>
+    <title>@ViewData["Title"]</title>
 </head>
 <body>
     <div class="wrapper">
@@ -54,5 +54,6 @@
         <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
         <script src="~/js/js.js"></script>
         @RenderSection("Scripts", required: false)
+    </div>
 </body>
 </html>
