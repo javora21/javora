@@ -20,10 +20,10 @@ namespace javora.Controllers
         [Route("Login")]
         public IActionResult Login()
         {
-            return View(new Login());
+            return View(new LoginModel());
         }
         [HttpPost]
-        public async Task<IActionResult> Login(Login model)
+        public async Task<IActionResult> Login(LoginModel model)
         {
             if (ModelState.IsValid)
             {
@@ -39,7 +39,7 @@ namespace javora.Controllers
                     
                 }
             }
-            return View(new Login());
+            return View(new LoginModel());
 
 
         }

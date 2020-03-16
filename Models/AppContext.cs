@@ -18,5 +18,7 @@ namespace javora.Models
         public DbSet<News> News { get; set; }
 
         public DbSet<News> Images { get; set; }
+
+        public DbSet<Document> Documents { get; set; }
     }
 }

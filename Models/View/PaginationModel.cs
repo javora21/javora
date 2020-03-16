@@ -5,10 +5,9 @@ using System.Threading.Tasks;
 
 namespace javora.Models.View
 {
-    public class Login
+    public class PaginationModel
     {
-        public string Log { get; set; }
-
-        public string Password { get; set; }
+        public int PageNumber { get; private set; }
+        public int TotalPages { get; private set; }
     }
 }

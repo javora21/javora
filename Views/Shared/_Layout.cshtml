@@ -6,54 +6,104 @@
     <meta name="description" content="Шаблоны сайтов бесплатно, дизайн сайта бесплатно, адаптивный дизайн">
     <meta name="keywords" content="Шаблоны сайтов бесплатно, дизайн сайта бесплатно, адаптивный дизайн">
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Poppins&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="~/css/style.css">
+    <link href="css/animate.css" rel="stylesheet" type="text/css" media="all">
+    <link href="css/ken-burns.css" rel="stylesheet" type="text/css" media="all" />
+    <script src="js/jquery-2.1.1.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="https://kit.fontawesome.com/897d622ace.js" crossorigin="anonymous"></script>
+
+
+    <script>
+        $(function () {
+            if (navigator.userAgent.match(/(iPod|iPhone|iPad|Android)/)) {
+                $('#ios-notice').removeClass('hidden');
+                $('.parallax-container').height($(window).height() * 0.5 | 0);
+            } else {
+                $(window).resize(function () {
+                    var parallaxHeight = 400;//Math.max($(window).height() * 0.7, 200) | 0;
+                    $('.parallax-container').height(parallaxHeight);
+                }).trigger('resize');
+            }
+        });
+    </script>
+    <script src="js/parallax.min.js"></script>
     <title>@ViewData["Title"]</title>
 </head>
 <body>
-    <div class="wrapper">
-        <!--Шапка-->
-        <div class="header">
-            <div class="header-logo"></div>
-            <div class="headerContent">
+    <section id="header">
+        <nav class="navbar navbar-default navbar-fixed-top">
+            <div class="container">
+                <!-- Brand and toggle get grouped for better mobile display -->
+                <div class="navbar-header page-scroll">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse"
+                            data-target="#bs-example-navbar-collapse-1">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <!-- <a class="navbar-brand" href="index.html">Classic</a> -->
+                </div>
 
-                <!--Навигация-->
-                <ul class="menu">
-                    <li><a href=#>Новини села</a></li>
-                    <li>
-                        <a href=#>Документація</a>
-                        <ul class="submenu">
-                            <li><a href=#>На землю</a></li>
-                            <li><a href=#>На хату</a></li>
-                            <li><a href=#>На рогату худобу</a></li>
-                        </ul>
-                    </li>
-                    <li>
-                        <a href=#>Купи Продай</a>
-                        <ul class="submenu">
-                            <li><a href=#>Купити село Явора</a></li>
-                            <li><a href=#>Продати село Явора</a></li>
-                        </ul>
-                    </li>
-                    <li><a href=#>Фотогалерея</a></li>
-                    <li><a href=#>Парафіянам</a></li>
-                    <li>
-                        <a href=#>Рієлторські послуги</a><ul class="submenu">
-                            <li><a href=#>Дусин Микола</a></li>
-                            <li><a href=#>Романович Іван</a></li>
-                        </ul>
-                    </li>
-                    <li><a href="@Url.Action("Login","Account")">Admin</a></li>
-                </ul>
+                <!-- Collect the nav links, forms, and other content for toggling -->
+                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                    <ul class="nav navbar-nav navbar-right">
+                        <li>
+                            <a class=" active_tab tag_menu" href="index.html">Головна</a>
+                        </li>
+
+                        <li class="dropdown">
+                            <a class="tag_menu" href="#" data-toggle="dropdown" role="button"
+                               aria-expanded="false">Інформаційна сторінка<span class="caret"></span></a>
+                            <ul class="dropdown-menu drop_1" role="menu">
+                                <li><a href="#">Оголошення</a></li>
+                                <li><a href="#">Події</a></li>
+                                <li><a href="#">Розклад транспорту</a></li>
+                                <li><a href="#">Розклад Богослужінь</a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a class="tag_menu" href="about.html">Новини</a>
+                        </li>
+
+                        <li class="dropdown">
+                            <a class="tag_menu" href="#" data-toggle="dropdown" role="button"
+                               aria-expanded="false">Документація<span class="caret"></span></a>
+                            <ul class="dropdown-menu drop_1" role="menu">
+                                <li><a href="#">На землю</a></li>
+                                <li><a href="#">На рогату худобу</a></li>
+                                <li><a href="#">Звітність</a></li>
+                            </ul>
+                        </li>
+
+                        <li>
+                            <a class="tag_menu" href="blog.html">Фотогалерея</a>
+                        </li>
+
+                        <li>
+                            <a class="tag_menu" href="team.html">Про село</a>
+                        </li>
+
+                        <li>
+                            <a class="tag_menu" href="list_detail.html">Зв'язатися з нами</a>
+                        </li>
+                    </ul>
+
+                </div>
+                <!-- /.navbar-collapse -->
             </div>
-        </div>
-        @RenderBody()
-        <script src="~/lib/jquery/dist/jquery.min.js"></script>
-        <script src="~/lib/bootstrap/dist/js/bootstrap-transition.js"></script>
-        <script src="~/lib/bootstrap/dist/js/bootstrap-carousel.js"></script>
-        <script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
-        <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
-        <script src="~/js/js.js"></script>
-        @RenderSection("Scripts", required: false)
-    </div>
+            <!-- /.container-fluid -->
+        </nav>
+    </section>
+    @RenderBody()
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap-transition.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap-carousel.js"></script>
+    <script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+    <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+    <script src="~/js/js.js"></script>
+    @RenderSection("Scripts", required: false)
 </body>
 </html>
