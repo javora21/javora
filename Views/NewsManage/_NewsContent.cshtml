@@ -1,40 +1,91 @@
 ﻿@model javora.Models.View.NewsModel
 
-    <div class="news-container">
-        <div class="news-header">
-            <img src="../@Model.MainImagePath" alt="">
-            <div class="news-title">
-                <h2>@Model.Title</h2>
-                <p>@Model.Description</p>
+    <section id="news-detail">
+        <div class="container">
+            <div class="row">
+                    <div class="as-tape-900">
+                        <div class="blog_1">
+                            <h2><a href="#">@Model.Title</a></h2>
+                            <ul>
+                                <li> <i class="fa fa-calendar"></i> @Model.CreateDate.Date.ToString("dd/MM/yyyy")</li>
+                                @*<li> <i class="fa fa-clock-o"></i> @Model.CreateDate.Hour:@Model.CreateDate.Minute</li>*@
+                            </ul>
+                        </div>
+                        <div class="blog_2 clearfix">
+                            <div><img src="~/@Url.Content(Model.MainImagePath)" style="width:100%" alt="@Model.Title"></div>
+                        </div>
+                        <div class="details_1 clearfix">
+                            <p>@Model.Description</p>
+                        </div>
+                        <div class="details_2">
+                            @Html.Raw(Model.Content)
+                        </div>
+                        
+                        @*<div class="details_4">
+                            <h5>Lacinia Nunc</h5>
+                            <p>Praesent mauris. Fusce nec tellus sed augue semper porta. Mauris massa *</p>
+                        </div>
+                        <div class="details_5">
+                            <label for="comment">Comment</label>
+                            <textarea placeholder="" class="form-control"></textarea>
+                        </div>
+                        <div class="details_6">
+                            <label for="comment">Name *</label>
+                            <input type="text" class="form-control" placeholder="">
+                        </div>
+                        <div class="details_6">
+                            <label for="comment">Email *</label>
+                            <input type="text" class="form-control" placeholder="">
+                        </div>
+                        <div class="details_6">
+                            <label for="comment">Website</label>
+                            <input type="text" class="form-control" placeholder="">
+                        </div>
+                        <div class="details_7">
+                            <p><a href="#">Post Comment</p>
+                        </div>*@
+                    </div>
+                    @*<div class="col-sm-3">
+                        <div class="blog_3">
+                            <h2>Integer Nec</h2>
+                        </div>
+                        <div class="blog_4">
+                            <a href="#"><img src="img/2.jpg" alt="img" style="width:100%;">
+                        </div>
+                        <div class="blog_5">
+                            <p><a href="deatils.html">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                        </div>
+                        <div class="blog_4">
+                            <a href="#"><img src="img/3.jpg" alt="img" style="width:100%;">
+                        </div>
+                        <div class="blog_5">
+                            <p><a href="deatils.html">Integer nec odionec odio. Praesent libero Sed cursus.</p>
+                        </div>
+                        <div class="blog_4">
+                            <a href="#"><img src="img/4.jpg" alt="img" style="width:100%;">
+                        </div>
+                        <div class="blog_5">
+                            <p><a href="deatils.html">Nulla quis sem at nibh elementum imperdiet. Duis sagittis.</p>
+                        </div>
+                        <div class="blog_4">
+                            <a href="#"><img src="img/5.jpg" alt="img" style="width:100%;">
+                        </div>
+                        <div class="blog_5">
+                            <p><a href="deatils.html">Praesent mauris. Fusce nec tellus sed augue semper porta.</p>
+                        </div>
+                        <div class="blog_4">
+                            <a href="#"><img src="img/6.jpg" alt="img" style="width:100%;">
+                        </div>
+                        <div class="blog_5">
+                            <p><a href="deatils.html"> Class aptent taciti sociosqu ad litora torquent per conubia</p>
+                        </div>
+                        <div class="blog_4">
+                            <a href="#"><img src="img/34.jpg" alt="img" style="width:100%;">
+                        </div>
+                        <div class="blog_5">
+                            <p><a href="deatils.html"> Class aptent taciti sociosqu ad litora torquent per conubia</p>
+                        </div>
+                    </div>*@
             </div>
         </div>
-        <div class="content-area">
-            @Html.Raw(Model.Content)
-        </div>
-    </div>
-<style>
-    .news-container{
-    padding:15px;
-    }
-    .news-header{
-        text-align:center
-    }
-    .news-header>img{
-        max-height:450px;
-    }
-    .news-title{
-        position: relative;
-        width:100%;
-        height:100px;
-        margin-top:-100px;
-	    padding: 10px 15px 5px;
-	    background: rgba(0, 0, 0, 0.75);
-        opacity:0.85;
-    }
-    .news-title>h2, .news-title>p {
-        color:white
-    }
-    .content-area{
-        margin:20px;
-    }
-</style>
+    </section>

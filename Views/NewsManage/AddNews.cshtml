@@ -1,6 +1,6 @@
 ﻿@model javora.Models.View.NewsModel
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Додати новину";
 }
 
 
@@ -9,8 +9,8 @@
 <script src="https://cdn.tiny.cloud/1/no-api-key/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
 
 
-<div class="content">
-    <h1>Add News</h1>
+<section class="as-tape-900">
+    <h1>Додати новину</h1>
     <div class="row">
         <div class="col">
             <form asp-action="SaveNews" enctype="multipart/form-data">
@@ -42,7 +42,7 @@
             </form>
         </div>
     </div>
-</div>
+</section>
 <script>
     
     tinymce.init({

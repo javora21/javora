@@ -4,8 +4,8 @@
     ViewData["Title"] = "DocumentAdminList";
 }
 
-<div class="content">
-    <a href="@Url.Action("AddNews")" class="btn btn-success" style="margin-bottom:10px">Додати новину</a>
+<div class="as-tape-900">
+    <a href="@Url.Action("AddDocument")" class="btn btn-success" style="margin-bottom:10px">Додати документ</a>
     <table class="table">
         <thead>
             <tr>
@@ -41,9 +41,9 @@
                         @item.Name
                     </td>
                     <td>
-                        @*<a href="@Url.Action("EditNews",new { guid = item.Guid})" class="btn btn-primary">Відкрити</a>
-                        <a href="@Url.Action("EditNews",new { guid = item.Guid})" class="btn btn-primary">Редагувати</a>
-                        <a href="@Url.Action("DeleteNews",new { guid = item.Guid}))" class="btn btn-danger">Видалити</a>*@
+                        @*<a href="@Url.Action("EditNews",new { guid = item.Guid})" class="btn btn-primary">Відкрити
+                        <a href="@Url.Action("EditNews",new { guid = item.Guid})" class="btn btn-primary">Редагувати
+                        <a href="@Url.Action("DeleteNews",new { guid = item.Guid}))" class="btn btn-danger">Видалити*@
                     </td>
                 </tr>
             }

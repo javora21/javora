@@ -1,0 +1,39 @@
+﻿@model javora.Models.View.DocumentListModel
+@{
+    ViewData["Title"] = "Документація";
+}
+<section id="list">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="list_1 clearfix">
+                    @if (Model.Docs != null)
+                    {
+                        @foreach (var item in Model.Docs)
+                        {
+                            <div class="col-sm-2">
+                                <div class="list_1_1 clearfix">
+                                    <div class="list_1_1i clearfix" style="text-align:center">
+                                        <a href="~/@item.Path" download="@item.Name@item.Extension" style="font-size:80px">
+                                            @switch (item.Extension)
+                                            {
+                                                case ".pdf":
+                                                    <i class="fa fa-file-pdf"></i>
+                                                    break;
+                                                case ".docx":
+                                                    <i class="fa fa-file-word"></i>
+                                                    break;
+                                            }
+                                            <p style="font-size:16px">@item.CreatedDate.ToString("dd/MM/yyyy")</p>
+                                        </a>
+                                        <h5><a href="~/@item.Path" download="@item.Name@item.Extension">@item.Name</a></h5>
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

@@ -23,6 +23,7 @@ namespace javora.Controllers
             return View(new LoginModel());
         }
         [HttpPost]
+        [Route("Login")]
         public async Task<IActionResult> Login(LoginModel model)
         {
             if (ModelState.IsValid)

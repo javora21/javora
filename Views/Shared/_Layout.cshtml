@@ -1,17 +1,20 @@
 ﻿<!DOCTYPE html>
 <html>
 <head>
+    <meta name="robots" content="noindex,nofollow" />
     <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="Шаблоны сайтов бесплатно, дизайн сайта бесплатно, адаптивный дизайн">
-    <meta name="keywords" content="Шаблоны сайтов бесплатно, дизайн сайта бесплатно, адаптивный дизайн">
-    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css">
+    <title>@ViewData["Title"]</title>
+    <link href="~/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Poppins&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="~/css/style.css">
-    <link href="css/animate.css" rel="stylesheet" type="text/css" media="all">
-    <link href="css/ken-burns.css" rel="stylesheet" type="text/css" media="all" />
-    <script src="js/jquery-2.1.1.min.js"></script>
-    <script src="js/bootstrap.min.js"></script>
+    <link href="~/css/style.css" rel="stylesheet">
+    <!-- <link rel="stylesheet" type="text/css" href="css/font-awesome.min.css" /> -->
+    <link href="~/css/animate.css" rel="stylesheet" type="text/css" media="all">
+    <link href="~/css/ken-burns.css" rel="stylesheet" type="text/css" media="all" />
+
+    <script src="~/js/jquery-2.1.1.min.js"></script>
+    <script src="~/js/bootstrap.min.js"></script>
     <script src="https://kit.fontawesome.com/897d622ace.js" crossorigin="anonymous"></script>
 
 
@@ -28,8 +31,7 @@
             }
         });
     </script>
-    <script src="js/parallax.min.js"></script>
-    <title>@ViewData["Title"]</title>
+    <script src="~/js/parallax.min.js"></script>
 </head>
 <body>
     <section id="header">
@@ -51,7 +53,7 @@
                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                     <ul class="nav navbar-nav navbar-right">
                         <li>
-                            <a class=" active_tab tag_menu" href="index.html">Головна</a>
+                            <a class=" active_tab tag_menu" href="@Url.Action("Index","Home")">Головна</a>
                         </li>
 
                         <li class="dropdown">
@@ -60,22 +62,16 @@
                             <ul class="dropdown-menu drop_1" role="menu">
                                 <li><a href="#">Оголошення</a></li>
                                 <li><a href="#">Події</a></li>
-                                <li><a href="#">Розклад транспорту</a></li>
+                                <li><a href="@Url.Action("RailwayInfo","InfoPage")">Розклад електричок</a></li>
                                 <li><a href="#">Розклад Богослужінь</a></li>
                             </ul>
                         </li>
                         <li>
-                            <a class="tag_menu" href="about.html">Новини</a>
+                            <a class="tag_menu" href="@Url.Action("NewsList","NewsManage")">Новини</a>
                         </li>
 
                         <li class="dropdown">
-                            <a class="tag_menu" href="#" data-toggle="dropdown" role="button"
-                               aria-expanded="false">Документація<span class="caret"></span></a>
-                            <ul class="dropdown-menu drop_1" role="menu">
-                                <li><a href="#">На землю</a></li>
-                                <li><a href="#">На рогату худобу</a></li>
-                                <li><a href="#">Звітність</a></li>
-                            </ul>
+                            <a class="tag_menu" href="@Url.Action("DocumentList","DocumentationManage")">Документація</a>
                         </li>
 
                         <li>
@@ -97,6 +93,7 @@
             <!-- /.container-fluid -->
         </nav>
     </section>
+    <section style="height:50px"></section>
     @RenderBody()
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap-transition.js"></script>

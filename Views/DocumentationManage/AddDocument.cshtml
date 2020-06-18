@@ -1,0 +1,32 @@
+﻿@model javora.Models.View.DocumentModel
+
+@{
+    ViewData["Title"] = "AddDocument";
+}
+
+<section class="as-tape-900">
+    <h1>Додати документ</h1>
+    <div class="row">
+        <div class="col">
+            <form asp-action="SaveDocument" enctype="multipart/form-data">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="form-group">
+                    <label asp-for="Name" class="control-label">Назва (до 100 символів)</label>
+                    <input asp-for="Name" class="form-control" style="width:100%"/>
+                    <span asp-validation-for="Name" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label class="btn btn-primary" for="file-loader">Файл</label>
+                    <input asp-for="File" id="file-loader" type="file" style="display:none" class="form-control" accept=".pdf, .docx"/>
+                    <span asp-validation-for="File" class="text-danger"></span>
+                </div>
+                <div class="form-group" id="file-view">
+                    <span class="text-danger">Файл Обов'язковий</span>
+                </div>
+                <div class="form-group">
+                    <input type="submit" value="Save" class="btn btn-primary" />
+                </div>
+            </form>
+        </div>
+    </div>
+</section>

@@ -18,5 +18,7 @@ namespace javora.Models.Database
         public List<Image> Images { get; set; }
 
         public Guid NewsGuid { get; set; }
+
+        public DateTime CreateTime { get; set; }
     }
 }

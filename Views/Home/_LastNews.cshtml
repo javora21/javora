@@ -1,0 +1,24 @@
+﻿@model IEnumerable<javora.Models.View.NewsModel>
+
+    <div class="col-sm-12">
+        @foreach (var item in Model)
+        {
+            <div class="col-sm-4">
+                <div class="properties_2">
+                    <div class="ih-item square">
+                        <a href="@Url.Action("News","NewsManage", new { guid = item.Guid })">
+                            <div class="img"><img src="~/@item.MainImagePath" alt="@item.Title"></div>
+                        </a>
+                    </div>
+                </div>
+                <div class="properties_3">
+                    <h4><a href="@Url.Action("NewsDetails","NewsManage", new { guid = item.Guid })">@item.Title</a></h4>
+                    <p>
+                        @item.Description
+                    </p>
+                </div>
+            </div>
+        }
+
+
+    </div>

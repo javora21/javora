@@ -34,7 +34,7 @@ $("#images-load-form").submit(function (event) {
 });
 
 $("#main-image").on('input', function (event) {
-    debugger;
+
     var reader = new FileReader();
     reader.readAsDataURL(event.currentTarget.files[0]);
     reader.onload = function () {
@@ -44,6 +44,18 @@ $("#main-image").on('input', function (event) {
     }  
 
 });
+$("#file-loader").on('input', function (event) {
+
+    var reader = new FileReader();
+    reader.readAsDataURL(event.currentTarget.files[0]);
+    reader.onload = function () {
+        $('#file-view').html(
+            '<p>' + event.currentTarget.files[0].name + '</p>'
+        );
+    }
+
+});
+
 
 
 

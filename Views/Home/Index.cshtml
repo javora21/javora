@@ -1,4 +1,5 @@
-﻿@{
+﻿@model IEnumerable<javora.Models.View.NewsModel>
+@{
     ViewData["Title"] = "Село Явора";
 }
 
@@ -69,56 +70,8 @@
             <h3 class="text-left">Останні новини</h3>
         </div>
     </div>
-    <div class="col-sm-12">
-        <div class="col-sm-4">
-            <div class="properties_2">
-                <div class="ih-item square">
-                    <a href="blog.html">
-                        <div class="img"><img src="img/car1.jpg" alt="img"></div>
-                    </a>
-                </div>
-            </div>
-            <div class="properties_3">
-                <h4><a href="blog.html">В селі Явора нічого не сталося</a></h4>
-                <p>
-                    бла бла бла бла бла бла бла бла бла бла бла бла бла бла бла бла
-                    бла бла бла бла бла бла бла бла бла бла бла бла бла бла бла бла
-                </p>
-            </div>
-        </div>
-        <div class="col-sm-4">
-            <div class="properties_2">
-                <div class="ih-item square">
-                    <a href="blog.html">
-                        <div class="img"><img src="img/car3.jpg" alt="img"></div>
-                    </a>
-                </div>
-            </div>
-            <div class="properties_3">
-                <h4><a href="blog.html">В селі Явора ніхто не народився і не помер</a></h4>
-                <p>
-                    бла бла бла бла бла бла бла бла бла бла бла бла бла бла бла бла
-                    бла бла бла бла бла бла бла бла бла бла бла бла бла бла бла бла
-                </p>
-            </div>
-        </div>
-        <div class="col-sm-4">
-            <div class="properties_2">
-                <div class="ih-item square">
-                    <a href="blog.html">
-                        <div class="img"><img src="img/car2.jpg" alt="img"></div>
-                    </a>
-                </div>
-            </div>
-            <div class="properties_3">
-                <h4><a href="blog.html"> ФК Явора нічого не виграла</a></h4>
-                <p>
-                    бла бла бла бла бла бла бла бла бла бла бла бла бла бла бла бла
-                    бла бла бла бла бла бла бла бла бла бла бла бла бла бла бла бла
-                </p>
-            </div>
-        </div>
-    </div>
+    @await Html.PartialAsync("_LastNews", Model)
+    
     <div class="col-sm-12">
         <div class="properties_1">
             <a href="#"><p class="text-right">Всі новини</p></a>
@@ -150,7 +103,7 @@
                 </div>
                 <div class="col-sm-4">
                     <div class="trust_2">
-                        <img src="img/car5.jpg" alt="img" style="width:100%;">
+                        <img src="~/RootContent/car5.jpg" alt="img" style="width:100%;">
                     </div>
                     <div class="trust_3">
                         <h3 class="text-center"><a href="blog.html">Концерт Винника</a></h3>
@@ -163,7 +116,7 @@
                 </div>
                 <div class="col-sm-4">
                     <div class="trust_2">
-                        <img src="img/car6.jpg" alt="img" style="width:100%;">
+                        <img src="~/RootContent/car6.jpg" alt="img" style="width:100%;">
                     </div>
                     <div class="trust_3">
                         <h3 class="text-center"><a href="blog.html">Заборона вживання алкоголю</a></h3>
@@ -197,17 +150,17 @@
             <div class="col-sm-12">
                 <div class="col-sm-4">
                     <div class="studio_2 clearfix">
-                        <img src="img/car7.jpg" style="height:300px; width:100%;">
+                        <img src="~/RootContent/car7.jpg" style="height:300px; width:100%;">
                     </div>
                 </div>
                 <div class="col-sm-4">
                     <div class="studio_3">
-                        <img src="img/car8.jpg" style="height:300px; width:100%;">
+                        <img src="~/RootContent/car8.jpg" style="height:300px; width:100%;">
                     </div>
                 </div>
                 <div class="col-sm-4">
                     <div class="studio_3">
-                        <img src="img/car9.jpg" style="height:300px; width:100%;">
+                        <img src="~/RootContent/car9.jpg" style="height:300px; width:100%;">
                     </div>
                 </div>
             </div>
@@ -224,7 +177,7 @@
                 </div>
                 <div class="col-sm-4">
                     <div class="studio_3">
-                        <img src="img/car3.jpg" style="height:300px; width:100%;">
+                        <img src="~/RootContent/car3.jpg" style="height:300px; width:100%;">
                     </div>
                 </div>
             </div>
@@ -244,8 +197,8 @@
                     <h3 class="text-center">Зв'язатись з нами</h3>
                     <p class="text-center">Маєш цікавий матеріал для нашого сайту? Зв'яжись з нами за вказаними контактами</p>
                     <h3 class="text-center">
-                        <i class="fa fa-phone"></i>+38(050) 000 00 00 <i class="fa fa-envelope"></i>email@email.com
-                        <i class="fab fa-telegram"></i>@@telegram <i class="fab fa-viber"></i>viber
+                        <i class="fa fa-phone"></i>+38(050) 000 00 00 <br /><i class="fa fa-envelope"></i>email@email.com<br />
+                        <i class="fab fa-telegram"></i>@@telegram<br /> <i class="fab fa-viber"></i>viber<br />
                     </h3>
                 </div>
             </div>

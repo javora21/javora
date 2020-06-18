@@ -1,0 +1,50 @@
+﻿@model javora.Models.View.NewsListModel
+
+@{
+    ViewData["Title"] = "Новини";
+}
+
+    <section id="blog">
+        <div class="container">
+            <div class="row">
+
+                <div class="as-tape-900">
+                    @foreach (var item in Model.News)
+                    {
+                        <div class="blog_1">
+                            <h2><a href="@Url.Action("NewsDetails","NewsManage",new { guid = item.Guid })">@item.Title</a></h2>
+                            <ul>
+                                <li> <i class="fa fa-calendar"></i> @item.CreateDate.Date.ToString("dd/MM/yyyy")</li>
+                                @*<li> <i class="fa fa-clock-o"></i> 5:28 pm</li>*@
+
+                            </ul>
+                        </div>
+                        <div class="blog_2 clearfix">
+                            <a href="@Url.Action("NewsDetails","NewsManage",new { guid = item.Guid })"><img src="~/@Url.Content(item.MainImagePath)" style="width:100%;max-width:700px" alt="@item.Title" /></a>
+                            <p>@item.Description</p>
+                        </div>
+                        <div class="blog_6 clearfix">
+                            <p class="clearfix"><a href="@Url.Action("NewsDetails","NewsManage",new { guid = item.Guid })">Читати</a></p>
+                        </div>
+                    }
+
+
+                    <div class="blog_7">
+                        <ul>
+                            @if (Model.Pagination.PageNumber > 1)
+                            {
+                                <li><a href="@Url.Action("NewsList",new { page = Model.Pagination.PageNumber - 1 })">&lt;&lt;</a></li>
+                            }
+
+                            <li>@Model.Pagination.PageNumber з @Model.Pagination.TotalPages</li>
+
+                            @if (Model.Pagination.PageNumber < Model.Pagination.TotalPages)
+                            {
+                                <li><a href="@Url.Action("NewsList",new { page = Model.Pagination.PageNumber + 1 })">>></a></li>
+                            }
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>

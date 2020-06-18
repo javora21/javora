@@ -7,7 +7,7 @@ namespace javora.Models.View
 {
     public class PaginationModel
     {
-        public int PageNumber { get; private set; }
-        public int TotalPages { get; private set; }
+        public int PageNumber { get; set; }
+        public int TotalPages { get; set; }
     }
 }

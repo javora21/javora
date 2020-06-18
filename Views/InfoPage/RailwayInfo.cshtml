@@ -1,0 +1,15 @@
+﻿@model string
+@{
+    ViewData["Title"] = "Розклад електричок";
+}
+
+<section class="as-tape-900">
+    <h1>Розклад електричок</h1>
+    <div class="row" style="overflow:scroll">
+        <div style="width:max-content;margin:auto">
+            @Html.Raw(Model)
+        </div>
+        
+    </div>
+</section>
+

@@ -23,25 +23,40 @@ namespace javora.Controllers
             _environment = environment;
             this.db = db; 
         }
-        public IActionResult Index()
+        #region User
+        [Route("DocumentsList")]
+        public async Task<IActionResult> DocumentList()
         {
-            return View();
-        }
-
-        #region Admin
-        [Route("DocumentList")]
-        public async Task<ActionResult> DocumentAdminList()
-        {
-            List<DocumentModel> docs = //new List<DocumentModel>();
+            DocumentListModel model = new DocumentListModel();
+            model.Docs =
             await db.Documents
             .Select(x => new DocumentModel
             {
                 Name = x.Name,
                 Path = x.Path,
-                Extension = x.Extension
+                Extension = x.Extension,
+                CreatedDate = x.CreateDate
             }).ToListAsync();
 
-            return View(docs);
+            return View(model);
+        }
+        #endregion
+        #region Admin
+        
+        public async Task<ActionResult> DocumentAdminList()
+        {
+            List<DocumentModel> model = 
+            await db.Documents
+            .Select(x => new DocumentModel
+            {
+                Id = x.Id,
+                Name = x.Name,
+                Path = x.Path,
+                Extension = x.Extension,
+                CreatedDate = x.CreateDate
+            }).ToListAsync();
+
+            return View(model);
         }
         [Route("AddDocument")]
         public IActionResult AddDocument()
